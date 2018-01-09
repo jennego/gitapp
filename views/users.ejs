@@ -5,13 +5,21 @@
     <title></title>
   </head>
   <body>
+    <% if (info[0].owner.avatar_url !== "") { %>
+    <img src="<%=info[0].owner.avatar_url%>" style="float:right">
+     <% } else { %>
+       <p> Where is your pic? </p> 
+     <% } %>
+
     <p> Hello <%= username %> </p>
 
     <p>Here are git repos belonging to <%=username %>!</p>
-   <ul>
     <% for (let i = 0; i < info.length; i++) { %>
-   <li> <%=  info[i].name %> </li>
+   <p> <strong> <a href="<%=info[i].html_url%>" target ="_blank"> <%=  info[i].name %> </a> </strong> </p>
+   <ul>
+      <li> Desciption: <%= info[i].description %> </li>
+      <li> Primary Language: <%= info[i].language %> </li>
+   </ul>
         <% } %>
-  </ul>
   </body>
 </html>
